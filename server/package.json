@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.16.4",
+    "express-graphql": "^0.8.0",
+    "graphql": "^14.3.0",
+    "pg": "^7.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  },
+  "scripts": {
+    "db-start": "docker rm -f postgresdb ; docker run -p 5432:5432 -v gameDb:/var/lib/postgresql/data -e POSTGRES_PASSWORD=admin -e POSTGRES_USER=admin --name postgresdb -d postgres:11.2-alpine ;",
+    "db-reset": "node ./utils/initDb.js",
+    "start:dev": "yarn run db-start && nodemon ./index.js"
+  }
+}
